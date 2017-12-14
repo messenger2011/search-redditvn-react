@@ -58,7 +58,7 @@ class PostComment extends Component {
                     <div className="col">
                       <span className="cmt-box brko">
                         <a className="mr-1" href={`https://www.facebook.com/${comment.from.id}`}>
-                          <span className="font-weight-bold">{comment.from.name}}</span>
+                          <span className="font-weight-bold">{comment.from.name}</span>
                         </a>
                         <span>{comment.message}</span>
                       </span>
