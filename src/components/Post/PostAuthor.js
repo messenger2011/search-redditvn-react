@@ -25,7 +25,9 @@ class PostAuthor extends PureComponent {
               </a>
             </div>
             <div>
-              <time>{new Date(this.props.createdTime).toLocaleString()}</time>
+              <small>
+                <time>{new Date(this.props.createdTime).toLocaleString()}</time>
+              </small>
             </div>
           </div>
         </div>
