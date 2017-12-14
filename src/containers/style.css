@@ -28,6 +28,10 @@ a.redditvn-op {
   border-radius: 4px;
 }
 
+a.redditvn-op span {
+  color: #fff;
+}
+
 .bd-footer {
   text-align: left;
   font-size: 85%;
@@ -259,4 +263,8 @@ mark {
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
 }

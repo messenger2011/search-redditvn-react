@@ -11,23 +11,23 @@ import classNames from 'classnames';
 
 class PostContainer extends PureComponent {
   render() {
-    if (this.props.post._id === undefined) {
+    const { post, images, comments } = this.props;
+    const showDetail = this.props.showDetail === true;
+
+    if (post._id === undefined) {
       return null;
     }
 
-    const articleClassName = classNames('card blog-post mb-3', { 'border-danger': this.props.post.is_deleted === true })
-    const showDetail = this.props.showDetail === true;
-
     return (
-      <article className={articleClassName}>
-        <PostAuthor user={this.props.post.from} createdTime={this.props.post.created_time} />
-        {!showDetail && <PostTitle postId={this.props.post._id} title={splitWord(this.props.post.message, 50)} />}
-        {showDetail && <PostNavigation prevPost={this.props.post.prev_post} nextPost={this.props.post.next_post} />}
-        <PostContent content={this.props.post.message} />
-        {showDetail && <PostImage images={this.props.images} />}
-        <PostInfo postId={this.props.post._id} likesCount={this.props.post.likes_count} isDeleted={this.props.post.is_deleted} commentsCount={this.props.post.comments_count} showDetail={showDetail} />
-        {showDetail && <PostComment postId={this.props.post._id} comments={this.props.comments} />}
-        {showDetail && <PostNavigation prevPost={this.props.post.prev_post} nextPost={this.props.post.next_post} />}
+      <article className={classNames('card blog-post mb-3', { 'border-danger': post.is_deleted === true })}>
+        <PostAuthor user={post.from} createdTime={post.created_time} />
+        {!showDetail && <PostTitle postId={post._id} title={splitWord(post.message, 50)} />}
+        {showDetail && <PostNavigation prevPost={post.prev_post} nextPost={post.next_post} />}
+        <PostContent content={post.message} />
+        {showDetail && <PostImage images={images} />}
+        <PostInfo postId={post._id} likesCount={post.likes_count} isDeleted={post.is_deleted} commentsCount={post.comments_count} showDetail={showDetail} />
+        {showDetail && <PostComment postId={post._id} opId={post.from.id} comments={comments} />}
+        {showDetail && <PostNavigation prevPost={post.prev_post} nextPost={post.next_post} />}
       </article>
     );
   }
