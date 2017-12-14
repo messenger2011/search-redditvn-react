@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { push } from 'react-router-redux';
-import $ from 'jquery';
 
 class Nav extends Component {
   constructor(props) {
@@ -28,20 +27,11 @@ class Nav extends Component {
     }
   }
 
-  componentDidMount() {
-    $('.navbar').on('mouseenter mouseleave', '.dropdown', function (e) {
-      var _d = $(e.target).closest('.dropdown'); _d.addClass('show');
-      setTimeout(function () {
-        _d[_d.is(':hover') ? 'addClass' : 'removeClass']('show');
-      }, 300);
-    });
-  }
-
   render() {
     const showSearchBar = this.props.pathname !== '/';
 
     return (
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <nav className="navbar navbar-expand-md navbar-dark navbar-top bg-dark mb-4">
         <NavLink exact to="/" className="navbar-brand">
           search.redditvn
         </NavLink>
@@ -99,6 +89,9 @@ class Nav extends Component {
                 <a className="dropdown-item" href="https://www.facebook.com/groups/redditvietnam/" target="_blank" rel="noopener noreferrer">
                   Group
                 </a>
+                <a className="dropdown-item" href="https://redditvn.com" target="_blank" rel="noopener noreferrer">
+                  Website
+                </a>
                 <a className="dropdown-item" href="https://www.reddit.com/r/RedditVN/" target="_blank" rel="noopener noreferrer">
                   r/RedditVN
                 </a>
@@ -106,10 +99,10 @@ class Nav extends Component {
             </li>
           </ul>
           {showSearchBar && (<form className="form-inline my-lg-0" onSubmit={this.onSubmitForm} target="_top">
-            <input className="form-control mr-sm-2" name="q" type="text"
-              onChange={this.onQueryChange}
-              placeholder="Search (regex support)" aria-label="Search (regex support)" value={this.state.query} />
-            <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+          <input className="form-control mr-sm-2" name="q" type="text"
+          onChange={this.onQueryChange}
+          placeholder="Search (regex support)" aria-label="Search (regex support)" value={this.state.query} />
+          <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
           </form>)}
         </div>
       </nav>
